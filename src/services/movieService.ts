@@ -1,4 +1,4 @@
-import axios, { type AxiosResponse } from 'axios';
+import axios from 'axios';
 import type { Movie } from '../types/movie';
 
 interface MovieApiResponse {
@@ -8,10 +8,22 @@ interface MovieApiResponse {
 const API_URL = 'https://api.themoviedb.org/3/search/movie';
 
 export async function fetchMovies(query: string): Promise<Movie[]> {
-    const response: AxiosResponse<MovieApiResponse> = await axios.get<MovieApiResponse>(API_URL, {
+    const token = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
+
+    if (!token) {
+        throw new Error('TMDB access token is not configured.');
+    }
+
+    const response = await axios.get<MovieApiResponse>(API_URL, {
         params: {
-            api_key: import.meta.env.VITE_TMDB_API_KEY,
             query,
+            include_adult: false,
+            language: 'en-US',
+            page: 1,
+        },
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${token}`,
         },
     });
 

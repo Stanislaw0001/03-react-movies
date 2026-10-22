@@ -13,5 +13,11 @@ export interface SearchBarProps {
 }
 
 export interface MovieGridProps {
-    movies: movies[];
+    movies: Movie[];
+    onSelect: (movie: Movie) => void;
+}
+
+export interface MovieModalProps {
+    movie: Movie;
+    onClose: () => void;
 }
