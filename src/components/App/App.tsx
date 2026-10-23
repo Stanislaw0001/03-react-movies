@@ -40,7 +40,7 @@ export default function App() {
     return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSubmit={handleSearch} />
 
       {isLoading ? <Loader /> : hasError ? <ErrorMessage /> : (
         <MovieGrid

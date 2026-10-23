@@ -1,8 +1,11 @@
-import type { SearchBarProps } from '.../../../src/types/movie';
 import styles from './SearchBar.module.css';
 import toast from 'react-hot-toast';
 
-function SearchBar({ onSearch: onSubmit }: SearchBarProps) {
+interface SearchBarProps {
+    onSubmit: (query: string) => void;
+}
+
+function SearchBar({ onSubmit }: SearchBarProps) {
     const handleSearch = (formData: FormData) => {
         const query = formData.get('query') as string;
 

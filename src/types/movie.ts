@@ -7,17 +7,3 @@ export interface Movie {
     release_date: string;
     vote_average: number;
 }
-
-export interface SearchBarProps {
-    onSearch: (topic: string) => void;
-}
-
-export interface MovieGridProps {
-    movies: Movie[];
-    onSelect: (movie: Movie) => void;
-}
-
-export interface MovieModalProps {
-    movie: Movie;
-    onClose: () => void;
-}
