@@ -29,7 +29,8 @@ export default function App() {
             }
 
             setMovies(results);
-        } catch {
+        } catch (error) {
+            console.log('TMDB request failed:', error)
             setHasError(true);
         } finally {
             setIsLoading(false);
